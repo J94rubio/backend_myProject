@@ -41,6 +41,8 @@ services:
         value: 3.12.6
       - key: GEMINI_API_KEY
         sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash
       - key: MASCOTAS_SERVICE_URL
         sync: false
       - key: CITAS_SERVICE_URL

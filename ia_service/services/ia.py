@@ -15,6 +15,7 @@ load_dotenv()
 
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL") or "gemini-3.5-flash"
 
 if not GEMINI_API_KEY:
     raise RuntimeError(
@@ -174,7 +175,7 @@ def generar_respuesta(
 ):
 
     parametros = {
-        "model": "gemini-3.5-flash",
+        "model": GEMINI_MODEL,
         "input": mensaje,
         "tools": TOOLS,
         "system_instruction": SYSTEM_INSTRUCTION
@@ -225,7 +226,7 @@ def generar_respuesta(
             })
 
         interaction = client.interactions.create(
-            model="gemini-3.5-flash",
+            model=GEMINI_MODEL,
             previous_interaction_id=interaction.id,
             input=resultados,
             tools=TOOLS,
